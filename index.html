@@ -1,17 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <title>입력폼 예제</title>
 </head>
-<body>
-    
 
+<body>
+    <h1>개인 정보 입력</h1>
+    <form>
+        <label for="name">이름:</label>
+        <input type="text" id="name" name="name"><br><br>
     
-    <script src="main.js"></script>
+    
+    
+        <label for="gender">성별:</label>
+        <select id="gender" name="gender">
+            <option value="남성">남성</option>
+            <option value="여성">여성</option>
+        </select><br><br>
+    
+        <label for="age">입사일:</label>
+        <input type="date" id="startDate" name="startDate">
+    
+        <br><br>
+        <label for="team">조:</label>
+        <select id="team" name="team">
+    
+            <option value="a">A조</option>
+            <option value="b">B조</option>
+            <option value="c">C조</option>
+            <option value="s">S조</option>
+    
+    
+        </select>
+        <br><br>
+        <label for="place">근무장소:</label>
+        <select id="place" name="place">
+    
+            <option value="동관">동관</option>
+            <option value="동해관">동해관</option>
+            <option value="신관">신관</option>
+            <option value="일출관">일출관</option>
+        </select>
+        <p>
+            <button type="button" onclick="addToTable()">Add</button>
+    </form>
+    
+    <h1>입력된 정보</h1>
+    <table id="table">
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>성별</th>
+                <th>입사일</th>
+                <th>조</th>
+                <th>근무장소</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        let people = [];
+
+            function addToTable() {
+                const name = document.getElementById("name").value;
+                const gender = document.getElementById("gender").value;
+                const startDate = document.getElementById("startDate").value;
+                const team = document.getElementById("team").value;
+                const place = document.getElementById("place").value;
+
+                    const person = { name, gender, startDate, team, place };
+                    people.push(person);
+
+                    const table = document.getElementById("table");
+                    const tbody = table.getElementsByTagName("tbody")[0];
+                    const row = tbody.insertRow();
+
+                    const cell1 = row.insertCell(0);
+                    const cell2 = row.insertCell(1);
+                    const cell3 = row.insertCell(2);
+                    const cell4 = row.insertCell(3);
+                    const cell5 = row.insertCell(4);
+
+                    cell1.innerHTML = name;
+                    cell2.innerHTML = gender;
+                    cell3.innerHTML = startDate;
+                    cell4.innerHTML = team;
+                    cell5.innerHTML = place;
+
+                }
+            </script>
 </body>
+
 
 </html>
